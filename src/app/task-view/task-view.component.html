@@ -3,12 +3,24 @@
     <div class="sidebar has-background-white">
       <h2 class="title has-text-primary">Collections</h2>
       <div class="collection-menu">
-        <a class="collection-menu-item"> Collection 1 </a>
-        <a class="collection-menu-item"> Collection 2 </a>
-        <a class="collection-menu-item"> Collection 3 </a>
+        <a
+          class="collection-menu-item"
+          *ngFor="let collection of collections; let i = index"
+          [routerLink]="['/collections', i]"
+          routerLinkActive="is-active"
+        >
+          {{ collection.title }}</a
+        >
+        <!-- <a class="collection-menu-item is-active"> Collection 2 </a> -->
+        <!-- <a class="collection-menu-item"> Collection 3 </a> -->
       </div>
 
-      <button class="button is-primary has-text-white">+ New List</button>
+      <button
+        class="button is-primary has-text-white"
+        routerLink="/new-collection"
+      >
+        + New Collection
+      </button>
     </div>
 
     <div class="task-list-container has-background-light">

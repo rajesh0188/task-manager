@@ -2,17 +2,20 @@ import { Injectable } from '@angular/core';
 
 import { Task } from './task.model';
 import { Collection } from './collection-model';
+import { LocalService } from './local.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TaskService {
-  collections: Collection[] = [];
+  collections: Collection[] = this.localService.getData('collection') || [];
 
-  constructor() {}
+  constructor(private localService: LocalService) {}
 
   createCollection(title: string) {
     this.collections.push(new Collection(title, []));
+    this.localService.saveData('collection', this.collections);
+    return this.collections.length - 1;
   }
 
   getCollection() {
