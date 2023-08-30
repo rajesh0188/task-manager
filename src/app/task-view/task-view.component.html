@@ -26,14 +26,11 @@
     <div class="task-list-container has-background-light">
       <h2 class="title has-text-primary">Tasks</h2>
       <!-- Tasks -->
-      <div class="task completed">
+      <!-- <div class="task completed">
         <p class="completed">This is a task</p>
-      </div>
-      <div class="task">
-        <p>This is a task</p>
-      </div>
-      <div class="task">
-        <p>This is a task</p>
+      </div> -->
+      <div class="task" *ngFor="let task of tasks">
+        <p>{{ task.title }}</p>
       </div>
     </div>
   </div>

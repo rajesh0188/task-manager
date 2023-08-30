@@ -13,6 +13,6 @@ export class NewCollectionComponent {
 
   createCollection(title: string) {
     const id = this.taskService.createCollection(title);
-    this.router.navigate(['/collections']);
+    this.router.navigate(['/collections', id]);
   }
 }

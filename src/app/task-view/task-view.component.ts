@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Collection } from '../collection-model';
+import { Task } from '../task.model';
+
 import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
@@ -10,6 +12,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 })
 export class TaskViewComponent implements OnInit {
   collections: Collection[] = [];
+  tasks: Task[] = [];
   constructor(
     private taskService: TaskService,
     private activatedRoute: ActivatedRoute
@@ -20,6 +23,8 @@ export class TaskViewComponent implements OnInit {
     console.info(this.collections);
     this.activatedRoute.params.subscribe((params: Params) => {
       console.info(params);
+      this.tasks = this.taskService.getTasks(params['collectionId']);
+      console.info(this.tasks);
     });
   }
 

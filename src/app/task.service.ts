@@ -13,28 +13,42 @@ export class TaskService {
   constructor(private localService: LocalService) {}
 
   createCollection(title: string) {
-    this.collections.push(new Collection(title, []));
-    this.localService.saveData('collection', this.collections);
+    this.collections.push(new Collection(this.collections.length, title, []));
+    this.syncDataToLocalStorage();
     return this.collections.length - 1;
   }
 
   getCollection() {
+    this.collections = this.localService.getData('collection');
     return this.collections.slice();
   }
 
   deleteCollection(index: number) {
     this.collections.slice(index, 1);
+    this.syncDataToLocalStorage();
+  }
+
+  getTasks(collectionId: number) {
+    return this.collections[collectionId].tasks || [];
   }
 
   addTask(collectionId: number, title: string) {
     this.collections[collectionId].tasks.push(new Task(title, 'not-completed'));
+    this.syncDataToLocalStorage();
   }
 
   deleteTask(collectionId: number, taskId: number) {
     this.collections[collectionId].tasks.splice(taskId, 1);
+    this.syncDataToLocalStorage();
   }
 
   changeTaskStatus(collectionId: number, taskId: number, newStatus: string) {
     this.collections[collectionId].tasks[taskId].status = newStatus;
+    this.syncDataToLocalStorage();
+  }
+
+  syncDataToLocalStorage() {
+    this.localService.saveData('collection', this.collections);
+    this.collections = this.localService.getData('collection');
   }
 }
