@@ -33,7 +33,10 @@ export class TaskService {
   }
 
   addTask(collectionId: number, title: string) {
-    this.collections[collectionId].tasks.push(new Task(title, 'not-completed'));
+    const taskId = this.collections[collectionId].tasks.length;
+    this.collections[collectionId].tasks.push(
+      new Task(taskId, collectionId, title, 'not-completed')
+    );
     this.syncDataToLocalStorage();
   }
 

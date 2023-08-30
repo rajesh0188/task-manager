@@ -32,6 +32,13 @@
       <div class="task" *ngFor="let task of tasks">
         <p>{{ task.title }}</p>
       </div>
+
+      <button
+        class="circle-add-button button is-primary"
+        [routerLink]="['/collections/', collectionId, 'new-task']"
+      >
+        <span class="icon"> + </span>
+      </button>
     </div>
   </div>
 </div>
