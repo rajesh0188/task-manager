@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { NewCollectionComponent } from './new-collection/new-collection.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { EditCollectionComponent } from './edit-collection/edit-collection.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,10 @@ const routes: Routes = [
     path: 'new-collection',
     component: NewCollectionComponent,
   },
-
+  {
+    path: 'edit-collection/:collectionId',
+    component: EditCollectionComponent,
+  },
   {
     path: 'collections',
     component: TaskViewComponent,

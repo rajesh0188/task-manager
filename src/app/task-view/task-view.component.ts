@@ -29,19 +29,13 @@ export class TaskViewComponent implements OnInit {
     });
   }
 
-  createNewCollection() {
-    console.info('in createNewCollection()');
-  }
-
   onTaskClick(taskId: number, status: string) {
     let newStatus;
-    console.info(status);
     if (status === 'not-completed') {
       newStatus = 'completed';
     } else {
       newStatus = 'not-completed';
     }
-    console.info(newStatus);
     this.taskService.changeTaskStatus(this.collectionId, taskId, newStatus);
     this.getTasks();
   }
@@ -49,13 +43,13 @@ export class TaskViewComponent implements OnInit {
   getTasks() {
     this.tasks = this.taskService.getTasks(this.collectionId);
     this.filteredTasks = this.tasks.filter((task) => {
-      console.info(task);
       if (this.currentFilter === 'all') {
         return task;
       } else {
         return task.status === this.currentFilter;
       }
     });
+    this.collections = this.taskService.getCollection();
   }
 
   onDeleteListClick() {}

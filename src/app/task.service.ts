@@ -23,6 +23,21 @@ export class TaskService {
     return this.collections.slice();
   }
 
+  getCollectionTitleById(collectionId: number) {
+    const index = this.collections.findIndex((collection) => {
+      return collection.id === +collectionId;
+    });
+    return this.collections[index].title;
+  }
+
+  updateCollection(collectionId: number, title: string) {
+    const index = this.collections.findIndex((collection) => {
+      return collection.id === +collectionId;
+    });
+    this.collections[index].title = title;
+    this.syncDataToLocalStorage();
+  }
+
   deleteCollection(index: number) {
     this.collections.slice(index, 1);
     this.syncDataToLocalStorage();
