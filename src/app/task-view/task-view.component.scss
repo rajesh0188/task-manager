@@ -15,11 +15,20 @@
 .sidebar {
   display: flex;
   flex-direction: column;
+  flex-grow: 0;
   width: 330px;
   background: white;
   padding: 42px;
   border-top-left-radius: 8px;
   border-bottom-left-radius: 8px;
+  .top-bar {
+    margin-bottom: 20px;
+    display: flex;
+    .title {
+      flex-grow: 0;
+      margin: 0;
+    }
+  }
 }
 
 .task-list-container {
@@ -34,7 +43,7 @@
     margin-bottom: 20px;
     display: flex;
     .title {
-      flex-grow: 1;
+      flex-grow: 2;
       margin: 0;
     }
   }
@@ -75,11 +84,11 @@
   padding: 15px 20px;
   border-radius: 5px;
   margin-top: 10px;
+  cursor: pointer;
 
   align-items: center;
 
   &:not(.completed) {
-    cursor: pointer;
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 
     &:active {
@@ -94,16 +103,6 @@
         transform: scale(1);
       }
     }
-  }
-
-  .completed {
-    text-decoration: line-through;
-    opacity: 0.8;
-  }
-
-  &.completed .task-text {
-    text-decoration: line-through;
-    opacity: 0.8;
   }
 
   .task-text {

@@ -12,7 +12,6 @@ export class LocalService {
   }
 
   public getData(key: string) {
-    console.info(localStorage.getItem(key));
     return localStorage.getItem(key)
       ? JSON.parse(localStorage.getItem(key) || '').data
       : [];

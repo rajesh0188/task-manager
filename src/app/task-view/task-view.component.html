@@ -1,7 +1,34 @@
 <div class="centered-content">
   <div class="task-manager-container">
     <div class="sidebar has-background-white">
-      <h2 class="title has-text-primary">Collections</h2>
+      <div class="top-bar">
+        <h2 class="title has-text-primary">Collections</h2>
+        <!-- <div class="dropdown is-hoverable is-right">
+          <div class="dropdown-trigger">
+            <a class="" aria-haspopup="true" aria-controls="dropdown-menu4">
+              <span class="icon">
+                <img
+                  src="https://www.iconpacks.net/icons/2/free-settings-icon-3110-thumb.png"
+                  alt="Settings"
+                  height="30px"
+                  width="30px"
+                />
+              </span>
+            </a>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item"> Edit </a>
+              <a
+                (click)="onDeleteListClick()"
+                class="dropdown-item has-text-danger"
+              >
+                Delete
+              </a>
+            </div>
+          </div>
+        </div> -->
+      </div>
       <div class="collection-menu">
         <a
           class="collection-menu-item"
@@ -24,21 +51,86 @@
     </div>
 
     <div class="task-list-container has-background-light">
-      <h2 class="title has-text-primary">Tasks</h2>
+      <div class="top-bar">
+        <h2 class="title has-text-primary">Tasks</h2>
+        <div class="dropdown is-hoverable is-right">
+          <div class="dropdown-trigger">
+            <button
+              class="button"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu4"
+            >
+              Filter: {{ currentFilter }}
+              <!-- <span class="icon is-small">
+                <i class="fas fa-cog" aria-hidden="true"></i>
+              </span> -->
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <a
+                (click)="onTaskFilterClick('all')"
+                class="dropdown-item"
+                [ngClass]="{ 'is-active': currentFilter === 'all' }"
+              >
+                All
+              </a>
+              <a
+                (click)="onTaskFilterClick('completed')"
+                class="dropdown-item"
+                [ngClass]="{ 'is-active': currentFilter === 'completed' }"
+              >
+                Completed
+              </a>
+              <a
+                (click)="onTaskFilterClick('not-completed')"
+                class="dropdown-item"
+                [ngClass]="{ 'is-active': currentFilter === 'not-completed' }"
+              >
+                Not Completed
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Tasks -->
       <!-- <div class="task completed">
         <p class="completed">This is a task</p>
       </div> -->
-      <div class="task" *ngFor="let task of tasks">
-        <p>{{ task.title }}</p>
+      <div
+        class="task tooltip"
+        [ngClass]="{ completed: task.status === 'completed' }"
+        *ngFor="let task of filteredTasks; let i = index"
+        (click)="onTaskClick(i, task.status)"
+      >
+        <p>
+          <label class="checkbox">
+            <input
+              [checked]="task.status === 'completed' ? true : false"
+              type="checkbox"
+            />
+          </label>
+          {{ task.title }}
+        </p>
+        <span class="tooltiptext">Click to change task status</span>
       </div>
+      <h3 class="empty-state-text" *ngIf="collectionId && tasks.length === 0">
+        There are no tasks here! Click the add button to create a new task.
+      </h3>
 
       <button
         class="circle-add-button button is-primary"
         [routerLink]="['/collections/', collectionId, 'new-task']"
+        [disabled]="!collectionId"
       >
         <span class="icon"> + </span>
       </button>
+
+      <div *ngIf="!collectionId">
+        <h3 class="empty-state-text">
+          Please select a Collection from the sidebar
+        </h3>
+      </div>
     </div>
   </div>
 </div>

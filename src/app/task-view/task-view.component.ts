@@ -13,7 +13,9 @@ import { ActivatedRoute, Params } from '@angular/router';
 export class TaskViewComponent implements OnInit {
   collections: Collection[] = [];
   tasks: Task[] = [];
+  filteredTasks: Task[] = [];
   collectionId!: number;
+  currentFilter: string = 'all';
   constructor(
     private taskService: TaskService,
     private activatedRoute: ActivatedRoute
@@ -21,16 +23,45 @@ export class TaskViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.collections = this.taskService.getCollection();
-    console.info(this.collections);
     this.activatedRoute.params.subscribe((params: Params) => {
-      console.info(params);
       this.collectionId = params['collectionId'];
-      this.tasks = this.taskService.getTasks(this.collectionId);
-      console.info(this.tasks);
+      this.getTasks();
     });
   }
 
   createNewCollection() {
     console.info('in createNewCollection()');
+  }
+
+  onTaskClick(taskId: number, status: string) {
+    let newStatus;
+    console.info(status);
+    if (status === 'not-completed') {
+      newStatus = 'completed';
+    } else {
+      newStatus = 'not-completed';
+    }
+    console.info(newStatus);
+    this.taskService.changeTaskStatus(this.collectionId, taskId, newStatus);
+    this.getTasks();
+  }
+
+  getTasks() {
+    this.tasks = this.taskService.getTasks(this.collectionId);
+    this.filteredTasks = this.tasks.filter((task) => {
+      console.info(task);
+      if (this.currentFilter === 'all') {
+        return task;
+      } else {
+        return task.status === this.currentFilter;
+      }
+    });
+  }
+
+  onDeleteListClick() {}
+
+  onTaskFilterClick(filter: string) {
+    this.currentFilter = filter;
+    this.getTasks();
   }
 }

@@ -17,9 +17,7 @@ export class NewTaskComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      console.info(params);
       this.collectionId = params['collectionId'];
-      console.info(this.collectionId);
     });
   }
 
