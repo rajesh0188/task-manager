@@ -39,17 +39,27 @@ export class TaskService {
   }
 
   deleteCollection(collectionId: number) {
-    console.info(collectionId);
     const index = this.collections.findIndex((collection) => {
       return collection.id === +collectionId;
     });
-    console.info(index);
     this.collections.slice(index, 1);
     this.syncDataToLocalStorage();
   }
 
   getTasks(collectionId: number) {
     return this.collections[collectionId].tasks || [];
+  }
+
+  getTaskTitleById(collectionId: number, taskId: number) {
+    const collectionIndex = this.collections.findIndex((collection) => {
+      return collection.id === +collectionId;
+    });
+    const titleIndex = this.collections[collectionIndex].tasks.findIndex(
+      (task) => {
+        return task.id === +taskId;
+      }
+    );
+    return this.collections[collectionIndex].tasks[titleIndex].title;
   }
 
   addTask(collectionId: number, title: string) {
@@ -60,8 +70,24 @@ export class TaskService {
     this.syncDataToLocalStorage();
   }
 
+  updateTask(collectionId: number, taskId: number, title: string) {
+    const collectionIndex = this.collections.findIndex((collection) => {
+      return collection.id === +collectionId;
+    });
+    const titleIndex = this.collections[collectionIndex].tasks.findIndex(
+      (task) => {
+        return task.id === +taskId;
+      }
+    );
+    this.collections[collectionId].tasks[taskId].title = title;
+    this.syncDataToLocalStorage();
+  }
+
   deleteTask(collectionId: number, taskId: number) {
-    this.collections[collectionId].tasks.splice(taskId, 1);
+    const index = this.collections[collectionId].tasks.findIndex((task) => {
+      return task.id === +taskId;
+    });
+    this.collections[collectionId].tasks.splice(index, 1);
     this.syncDataToLocalStorage();
   }
 

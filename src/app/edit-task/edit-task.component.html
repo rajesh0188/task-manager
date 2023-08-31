@@ -1,0 +1,23 @@
+<div class="centered-content">
+  <div class="modal-box">
+    <h2 class="title has-text-primary">Edit a Task</h2>
+
+    <input
+      #taskTitleInput
+      class="input has-background-light"
+      type="text"
+      placeholder=""
+      [(ngModel)]="taskTitle"
+    />
+    <br /><br />
+    <div class="buttons is-right">
+      <button class="button" routerLink="/">Cancel</button>
+      <button
+        class="button is-primary has-text-white"
+        (click)="editTask(taskTitleInput.value)"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+</div>

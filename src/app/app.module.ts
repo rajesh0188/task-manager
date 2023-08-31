@@ -8,6 +8,7 @@ import { TaskViewComponent } from './task-view/task-view.component';
 import { NewCollectionComponent } from './new-collection/new-collection.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { EditCollectionComponent } from './edit-collection/edit-collection.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { EditCollectionComponent } from './edit-collection/edit-collection.compo
     NewCollectionComponent,
     NewTaskComponent,
     EditCollectionComponent,
+    EditTaskComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

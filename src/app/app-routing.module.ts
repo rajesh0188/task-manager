@@ -4,6 +4,7 @@ import { TaskViewComponent } from './task-view/task-view.component';
 import { NewCollectionComponent } from './new-collection/new-collection.component';
 import { NewTaskComponent } from './new-task/new-task.component';
 import { EditCollectionComponent } from './edit-collection/edit-collection.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'collections/:collectionId/new-task',
     component: NewTaskComponent,
+  },
+  {
+    path: 'collections/:collectionId/edit-task/:taskId',
+    component: EditTaskComponent,
   },
 ];
 
