@@ -37,6 +37,10 @@ const routes: Routes = [
     path: 'collections/:collectionId/edit-task/:taskId',
     component: EditTaskComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'collections',
+  },
 ];
 
 @NgModule({
