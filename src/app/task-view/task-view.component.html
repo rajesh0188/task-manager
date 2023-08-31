@@ -28,7 +28,10 @@
     <div class="task-list-container has-background-light">
       <div class="top-bar">
         <h2 class="title has-text-primary">Tasks</h2>
-        <div class="dropdown is-hoverable is-right">
+        <div
+          *ngIf="collections.length > 0 && tasks.length > 0"
+          class="dropdown is-hoverable is-right"
+        >
           <div class="dropdown-trigger">
             <button
               class="button"
@@ -72,12 +75,16 @@
             </div>
           </div>
         </div>
-        <div class="dropdown is-hoverable is-right">
+        <div
+          *ngIf="collections.length > 0"
+          class="dropdown is-hoverable is-right"
+        >
           <div class="dropdown-trigger">
-            <a
+            <button
               class="button"
               aria-haspopup="true"
               aria-controls="dropdown-menu4"
+              [disabled]="collections.length === 0"
             >
               <span class="icon">
                 <img
@@ -87,7 +94,7 @@
                   width="30px"
                 />
               </span>
-            </a>
+            </button>
           </div>
           <div class="dropdown-menu" id="dropdown-menu4" role="menu">
             <div class="dropdown-content">
@@ -167,14 +174,21 @@
           </div>
         </div>
       </div>
-      <h3 class="empty-state-text" *ngIf="collectionId && tasks.length === 0">
+      <h3
+        class="empty-state-text"
+        *ngIf="collections.length > 0 && tasks.length === 0"
+      >
         There are no tasks here! Click the add button to create a new task.
+      </h3>
+      <h3 class="empty-state-text" *ngIf="collections.length === 00">
+        There are no Collections here! Add collection using 'New Collection'
+        button in the sidebar.
       </h3>
 
       <button
         class="circle-add-button button is-primary"
         [routerLink]="['/collections/', collectionId, 'new-task']"
-        [disabled]="!collectionId"
+        [disabled]="!collectionId || collections.length === 0"
       >
         <span class="icon"> + </span>
       </button>
