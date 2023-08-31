@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   templateUrl: './edit-task.component.html',
   styleUrls: ['./edit-task.component.scss'],
 })
-export class EditTaskComponent {
+export class EditTaskComponent implements OnInit, AfterViewChecked {
   collectionId!: number;
   taskId!: number;
   taskTitle: string = '';
@@ -28,6 +28,11 @@ export class EditTaskComponent {
       this.taskId
     );
   }
+
+  ngAfterViewChecked(): void {
+    document.getElementById('titleInput')!.focus();
+  }
+
   editTask(title: string) {
     this.taskService.updateTask(this.collectionId, this.taskId, title);
     this.router.navigate(['/collections', this.collectionId]);

@@ -1,24 +1,30 @@
 <div class="centered-content">
   <div class="modal-box">
     <h2 class="title has-text-primary">Edit Collection</h2>
-
-    <input
-      #collectionTitleInput
-      class="input has-background-light"
-      type="text"
-      autofocus
-      placeholder="Enter collection name..."
-      [(ngModel)]="collectionTitle"
-    />
-    <br /><br />
-    <div class="buttons is-right">
-      <button class="button" routerLink="/">Cancel</button>
-      <button
-        class="button is-primary has-text-white"
-        (click)="updateCollection(collectionTitleInput.value)"
-      >
-        Save
-      </button>
-    </div>
+    <form>
+      <input
+        #collectionTitleInput
+        class="input has-background-light"
+        type="text"
+        id="titleInput"
+        placeholder="Enter collection name..."
+        [(ngModel)]="collectionTitle"
+        name="titleInput"
+      />
+      <br /><br />
+      <div class="buttons is-right">
+        <button type="button" class="button" (click)="onCancelClick()">
+          Cancel
+        </button>
+        <button
+          class="button is-primary has-text-white"
+          (click)="updateCollection(collectionTitleInput.value)"
+          (keyup.enter)="updateCollection(collectionTitleInput.value)"
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </div>

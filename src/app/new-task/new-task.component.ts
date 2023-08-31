@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 
@@ -7,7 +7,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
   templateUrl: './new-task.component.html',
   styleUrls: ['./new-task.component.scss'],
 })
-export class NewTaskComponent implements OnInit {
+export class NewTaskComponent implements OnInit, AfterViewChecked {
   collectionId!: number;
   constructor(
     private taskService: TaskService,
@@ -19,6 +19,10 @@ export class NewTaskComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.collectionId = params['collectionId'];
     });
+  }
+
+  ngAfterViewChecked(): void {
+    document.getElementById('titleInput')!.focus();
   }
 
   createTask(title: string) {

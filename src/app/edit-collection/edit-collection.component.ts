@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewChecked } from '@angular/core';
 import { TaskService } from '../task.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Collection } from '../collection-model';
@@ -8,7 +8,7 @@ import { Collection } from '../collection-model';
   templateUrl: './edit-collection.component.html',
   styleUrls: ['./edit-collection.component.scss'],
 })
-export class EditCollectionComponent implements OnInit {
+export class EditCollectionComponent implements OnInit, AfterViewChecked {
   collectionId!: number;
   collectionTitle: string = '';
 
@@ -27,8 +27,16 @@ export class EditCollectionComponent implements OnInit {
     );
   }
 
+  ngAfterViewChecked(): void {
+    document.getElementById('titleInput')!.focus();
+  }
+
   updateCollection(title: string) {
     this.taskService.updateCollection(this.collectionId, title);
+    this.router.navigate(['/collections', this.collectionId]);
+  }
+
+  onCancelClick() {
     this.router.navigate(['/collections', this.collectionId]);
   }
 }

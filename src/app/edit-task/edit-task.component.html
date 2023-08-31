@@ -1,24 +1,29 @@
 <div class="centered-content">
   <div class="modal-box">
     <h2 class="title has-text-primary">Edit a Task</h2>
-
-    <input
-      #taskTitleInput
-      class="input has-background-light"
-      type="text"
-      placeholder=""
-      autofocus
-      [(ngModel)]="taskTitle"
-    />
-    <br /><br />
-    <div class="buttons is-right">
-      <button class="button" routerLink="/">Cancel</button>
-      <button
-        class="button is-primary has-text-white"
-        (click)="editTask(taskTitleInput.value)"
-      >
-        Save
-      </button>
-    </div>
+    <form>
+      <input
+        #taskTitleInput
+        class="input has-background-light"
+        type="text"
+        placeholder=""
+        id="titleInput"
+        name="titleInput"
+        autofocus
+        [(ngModel)]="taskTitle"
+      />
+      <br /><br />
+      <div class="buttons is-right">
+        <button class="button" type="button" routerLink="/">Cancel</button>
+        <button
+          class="button is-primary has-text-white"
+          (click)="editTask(taskTitleInput.value)"
+          (keyup.enter)="editTask(taskTitleInput.value)"
+          type="submit"
+        >
+          Save
+        </button>
+      </div>
+    </form>
   </div>
 </div>
