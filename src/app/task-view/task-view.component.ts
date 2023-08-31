@@ -16,6 +16,7 @@ export class TaskViewComponent implements OnInit {
   filteredTasks: Task[] = [];
   collectionId!: number;
   currentFilter: string = 'all';
+  collectionTitle: string = '';
   constructor(
     private taskService: TaskService,
     private activatedRoute: ActivatedRoute,
@@ -28,6 +29,9 @@ export class TaskViewComponent implements OnInit {
       this.collectionId = params['collectionId'];
       this.getTasks();
     });
+    this.collectionTitle = this.taskService.getCollectionTitleById(
+      this.collectionId
+    );
   }
 
   onTaskClick(taskId: number, status: string) {

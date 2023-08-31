@@ -12,7 +12,9 @@
       />
       <br /><br />
       <div class="buttons is-right">
-        <button class="button" type="button" routerLink="/">Cancel</button>
+        <button class="button" type="button" (click)="onCancelClick()">
+          Cancel
+        </button>
         <button
           class="button is-primary has-text-white"
           (click)="createCollection(collectionTitleInput.value)"

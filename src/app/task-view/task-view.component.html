@@ -182,8 +182,8 @@
         class="empty-state-text"
         *ngIf="collections.length > 0 && tasks.length === 0"
       >
-        There are no sub tasks here! Click the add button to create a new sub
-        task.
+        There are no sub tasks for <b>{{ collectionTitle }}</b> here! Click the
+        add button to create a new sub task.
       </h3>
       <h3 class="empty-state-text" *ngIf="collections.length === 00">
         There are no Tasks here! Add Task using 'New Task' button in the

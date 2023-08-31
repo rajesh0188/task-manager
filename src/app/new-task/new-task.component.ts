@@ -9,6 +9,7 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 })
 export class NewTaskComponent implements OnInit, AfterViewChecked {
   collectionId!: number;
+  collectionTitle: string = '';
   constructor(
     private taskService: TaskService,
     private activatedRoute: ActivatedRoute,
@@ -19,6 +20,9 @@ export class NewTaskComponent implements OnInit, AfterViewChecked {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.collectionId = params['collectionId'];
     });
+    this.collectionTitle = this.taskService.getCollectionTitleById(
+      this.collectionId
+    );
   }
 
   ngAfterViewChecked(): void {
@@ -27,6 +31,10 @@ export class NewTaskComponent implements OnInit, AfterViewChecked {
 
   createTask(title: string) {
     this.taskService.addTask(this.collectionId, title);
+    this.router.navigate(['/collections', this.collectionId]);
+  }
+
+  onCancelClick() {
     this.router.navigate(['/collections', this.collectionId]);
   }
 }
