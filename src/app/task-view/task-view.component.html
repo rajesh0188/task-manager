@@ -54,21 +54,25 @@
               <a
                 (click)="onTaskFilterClick('all')"
                 class="dropdown-item"
-                [ngClass]="{ 'is-active': currentFilter === 'all' }"
+                [ngClass]="{ 'filter-highlight': currentFilter === 'all' }"
               >
                 All
               </a>
               <a
                 (click)="onTaskFilterClick('completed')"
                 class="dropdown-item"
-                [ngClass]="{ 'is-active': currentFilter === 'completed' }"
+                [ngClass]="{
+                  'filter-highlight': currentFilter === 'completed'
+                }"
               >
                 Completed
               </a>
               <a
                 (click)="onTaskFilterClick('not-completed')"
                 class="dropdown-item"
-                [ngClass]="{ 'is-active': currentFilter === 'not-completed' }"
+                [ngClass]="{
+                  'filter-highlight': currentFilter === 'not-completed'
+                }"
               >
                 Not Completed
               </a>

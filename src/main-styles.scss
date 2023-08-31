@@ -3,8 +3,9 @@
 // Import Fonts (Lato and Nunito)
 @import url("https://fonts.googleapis.com/css?family=Lato:400,700|Nunito:400,700");
 
-$aqua: #00ffff;
-$blue: #0000ff;
+// Added/changed color from rationarium site
+$aqua: #00d6e1;
+$blue: #1e93f1;
 $bright-blue: #0096ff;
 $baby-blue: #89cff0;
 
@@ -25,7 +26,7 @@ $input-shadow: none;
 // Set custom global styles (will be applied to whole app)
 
 html {
-  background: linear-gradient(to right top, $aqua, $blue);
+  background: linear-gradient(to left bottom, $aqua, $blue);
 }
 
 html,
