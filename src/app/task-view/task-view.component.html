@@ -32,6 +32,11 @@
           <div class="dropdown-trigger">
             <button
               class="button"
+              [ngClass]="{
+                'is-primary':
+                  currentFilter === 'completed' ||
+                  currentFilter === 'not-completed'
+              }"
               aria-haspopup="true"
               aria-controls="dropdown-menu4"
             >
