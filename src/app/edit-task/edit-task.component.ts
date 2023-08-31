@@ -11,6 +11,7 @@ export class EditTaskComponent implements OnInit, AfterViewChecked {
   collectionId!: number;
   taskId!: number;
   taskTitle: string = '';
+  collectionTitle: string = '';
 
   constructor(
     private taskService: TaskService,
@@ -27,6 +28,9 @@ export class EditTaskComponent implements OnInit, AfterViewChecked {
       this.collectionId,
       this.taskId
     );
+    this.collectionTitle = this.taskService.getCollectionTitleById(
+      this.collectionId
+    );
   }
 
   ngAfterViewChecked(): void {
@@ -35,6 +39,10 @@ export class EditTaskComponent implements OnInit, AfterViewChecked {
 
   editTask(title: string) {
     this.taskService.updateTask(this.collectionId, this.taskId, title);
+    this.router.navigate(['/collections', this.collectionId]);
+  }
+
+  onCancelClick() {
     this.router.navigate(['/collections', this.collectionId]);
   }
 }

@@ -1,6 +1,10 @@
 <div class="centered-content">
   <div class="modal-box">
-    <h2 class="title has-text-primary">Edit a Task</h2>
+    <h2 class="title has-text-primary">Edit a Sub Task</h2>
+    <h3>
+      Task: <b>{{ collectionTitle }}</b>
+    </h3>
+    <br />
     <form>
       <input
         #taskTitleInput
@@ -14,7 +18,9 @@
       />
       <br /><br />
       <div class="buttons is-right">
-        <button class="button" type="button" routerLink="/">Cancel</button>
+        <button class="button" type="button" (click)="onCancelClick()">
+          Cancel
+        </button>
         <button
           class="button is-primary has-text-white"
           (click)="editTask(taskTitleInput.value)"
