@@ -54,6 +54,8 @@
   flex-direction: column;
   margin-top: 15px;
   flex-grow: 1;
+  max-height: 500px;
+  overflow-y: auto;
 
   .collection-menu-item {
     display: flex;
@@ -139,4 +141,9 @@ span.icon {
 
 .icon-btn {
   border: none !important;
+}
+
+.task-items {
+  max-height: 500px;
+  overflow-y: auto;
 }

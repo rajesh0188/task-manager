@@ -103,55 +103,57 @@
       <!-- <div class="task completed">
         <p class="completed">This is a task</p>
       </div> -->
-      <div
-        class="task tooltip"
-        [ngClass]="{ completed: task.status === 'completed' }"
-        *ngFor="let task of filteredTasks; let i = index"
-        (click)="onTaskClick(i, task.status)"
-      >
-        <div class="task-text">
-          <p>
-            <label class="checkbox">
-              <input
-                [checked]="task.status === 'completed' ? true : false"
-                type="checkbox"
-              />
-            </label>
-            {{ task.title }}
-          </p>
-          <span class="tooltiptext">Click to change task status</span>
-        </div>
-        <div class="task-buttons is-right">
-          <button class="button icon-btn is-small">
-            <div class="icon">
-              <img
-                src="https://img.favpng.com/20/19/20/computer-icons-editing-icon-design-symbol-png-favpng-dyeD5mCrZ3BA3ERVZTiaa8F1F.jpg"
-                alt="Edit"
-                title="Edit"
-                height="20px"
-                width="20px"
-                (click)="onEditTaskClick(task.id)"
-              />
-              <!-- <i class="fas fa-edit"></i> -->
-            </div>
-          </button>
+      <div class="task-items">
+        <div
+          class="task tooltip"
+          [ngClass]="{ completed: task.status === 'completed' }"
+          *ngFor="let task of filteredTasks; let i = index"
+          (click)="onTaskClick(i, task.status)"
+        >
+          <div class="task-text">
+            <p>
+              <label class="checkbox">
+                <input
+                  [checked]="task.status === 'completed' ? true : false"
+                  type="checkbox"
+                />
+              </label>
+              {{ task.title }}
+            </p>
+            <span class="tooltiptext">Click to change task status</span>
+          </div>
+          <div class="task-buttons is-right">
+            <button class="button icon-btn is-small">
+              <div class="icon">
+                <img
+                  src="https://img.favpng.com/20/19/20/computer-icons-editing-icon-design-symbol-png-favpng-dyeD5mCrZ3BA3ERVZTiaa8F1F.jpg"
+                  alt="Edit"
+                  title="Edit"
+                  height="20px"
+                  width="20px"
+                  (click)="onEditTaskClick(task.id)"
+                />
+                <!-- <i class="fas fa-edit"></i> -->
+              </div>
+            </button>
 
-          <button
-            class="button icon-btn is-small"
-            (click)="onDeleteTaskClick(task.id)"
-            style="margin-left: 10px"
-          >
-            <div class="icon">
-              <img
-                src="https://www.clipartmax.com/png/middle/84-842915_delete-icon-png-red.png"
-                alt="Delete"
-                height="20px"
-                title="Delete"
-                width="20px"
-              />
-              <!-- <i class="fas fa-trash"></i> -->
-            </div>
-          </button>
+            <button
+              class="button icon-btn is-small"
+              (click)="onDeleteTaskClick(task.id)"
+              style="margin-left: 10px"
+            >
+              <div class="icon">
+                <img
+                  src="https://www.clipartmax.com/png/middle/84-842915_delete-icon-png-red.png"
+                  alt="Delete"
+                  height="20px"
+                  title="Delete"
+                  width="20px"
+                />
+                <!-- <i class="fas fa-trash"></i> -->
+              </div>
+            </button>
+          </div>
         </div>
       </div>
       <h3 class="empty-state-text" *ngIf="collectionId && tasks.length === 0">
