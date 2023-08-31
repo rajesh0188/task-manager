@@ -1,13 +1,13 @@
-[debug] [2023-08-30T04:19:38.326Z] ----------------------------------------------------------------------
-[debug] [2023-08-30T04:19:38.328Z] Command:       /usr/local/bin/firebase /Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init
-[debug] [2023-08-30T04:19:38.329Z] CLI Version:   12.5.2
-[debug] [2023-08-30T04:19:38.329Z] Platform:      darwin
-[debug] [2023-08-30T04:19:38.330Z] Node Version:  v16.16.0
-[debug] [2023-08-30T04:19:38.331Z] Time:          Wed Aug 30 2023 09:49:38 GMT+0530 (India Standard Time)
-[debug] [2023-08-30T04:19:38.331Z] ----------------------------------------------------------------------
+[debug] [2023-08-31T07:13:09.193Z] ----------------------------------------------------------------------
+[debug] [2023-08-31T07:13:09.195Z] Command:       /usr/local/bin/firebase /Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init hosting
+[debug] [2023-08-31T07:13:09.195Z] CLI Version:   12.5.2
+[debug] [2023-08-31T07:13:09.195Z] Platform:      darwin
+[debug] [2023-08-31T07:13:09.196Z] Node Version:  v16.16.0
+[debug] [2023-08-31T07:13:09.197Z] Time:          Thu Aug 31 2023 12:43:09 GMT+0530 (India Standard Time)
+[debug] [2023-08-31T07:13:09.197Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2023-08-30T04:19:38.342Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2023-08-30T04:19:38.344Z] > authorizing via signed-in user (rajesh0188@gmail.com)
+[debug] [2023-08-31T07:13:09.209Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-31T07:13:09.210Z] > authorizing via signed-in user (rajesh0188@gmail.com)
 [info] 
      ######## #### ########  ######## ########     ###     ######  ########
      ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
@@ -27,13 +27,52 @@ You're about to initialize a Firebase project in this directory:
 [info] but for now we'll just set up a default project.
 [info] 
 [info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
-[debug] [2023-08-30T04:20:27.346Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
-[debug] [2023-08-30T04:20:27.351Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"simpleTaskManager","name":"simpleTaskManager"}
-[debug] [2023-08-30T04:20:28.784Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
-[debug] [2023-08-30T04:20:28.785Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
-[debug] [2023-08-30T04:20:28.789Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id contains invalid characters]
+[debug] [2023-08-31T07:13:21.040Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2023-08-31T07:13:21.044Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"taskManager","name":"taskManager"}
+[debug] [2023-08-31T07:13:22.253Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2023-08-31T07:13:22.254Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id contains invalid characters]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id contains invalid characters"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2023-08-31T07:13:22.258Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id contains invalid characters]
     at responseToError (/Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
     at RetryOperation._fn (/Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:285:77)
     at processTicksAndRejections (node:internal/process/task_queues:96:5)
 [error] 
 [error] Error: Failed to create project. See firebase-debug.log for more info.
+[debug] [2023-08-31T07:14:23.114Z] ----------------------------------------------------------------------
+[debug] [2023-08-31T07:14:23.116Z] Command:       /usr/local/bin/firebase /Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase init hosting
+[debug] [2023-08-31T07:14:23.117Z] CLI Version:   12.5.2
+[debug] [2023-08-31T07:14:23.117Z] Platform:      darwin
+[debug] [2023-08-31T07:14:23.118Z] Node Version:  v16.16.0
+[debug] [2023-08-31T07:14:23.123Z] Time:          Thu Aug 31 2023 12:44:23 GMT+0530 (India Standard Time)
+[debug] [2023-08-31T07:14:23.123Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-08-31T07:14:23.135Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-08-31T07:14:23.137Z] > authorizing via signed-in user (rajesh0188@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/rajeshramakrishnan/Workspace/Angular_16/task-manager
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  If you want to create a project in a Google Cloud organization or folder, please use "firebase projects:create" instead, and return to this command when you've created the project. 
+[debug] [2023-08-31T07:14:33.746Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2023-08-31T07:14:33.750Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"task-manager1","name":"task-manager1"}
+[debug] [2023-08-31T07:14:35.999Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 409
+[debug] [2023-08-31T07:14:36.000Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":409,"message":"Requested entity already exists","status":"ALREADY_EXISTS"}}
+[debug] [2023-08-31T07:14:36.004Z] FirebaseError: HTTP Error: 409, Requested entity already exists
+    at responseToError (/Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/Users/rajeshramakrishnan/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:285:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to create project because there is already a project with ID task-manager1. Please try again with a unique project ID.
