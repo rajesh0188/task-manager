@@ -17,6 +17,8 @@ export class TaskViewComponent implements OnInit {
   collectionId!: number;
   currentFilter: string = 'all';
   collectionTitle: string = '';
+  currentFilterDisplay: string = '';
+
   constructor(
     private taskService: TaskService,
     private activatedRoute: ActivatedRoute,
@@ -54,6 +56,13 @@ export class TaskViewComponent implements OnInit {
         return task.status === this.currentFilter;
       }
     });
+    if (this.currentFilter === 'all') {
+      this.currentFilterDisplay = 'All';
+    } else if (this.currentFilter === 'completed') {
+      this.currentFilterDisplay = 'Completed';
+    } else if (this.currentFilter === 'not-completed') {
+      this.currentFilterDisplay = 'Not Completed';
+    }
     this.collections = this.taskService.getCollection();
   }
 

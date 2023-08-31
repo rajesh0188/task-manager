@@ -35,15 +35,17 @@
           <div class="dropdown-trigger">
             <button
               class="button"
-              [ngClass]="{
-                'is-primary':
-                  currentFilter === 'completed' ||
-                  currentFilter === 'not-completed'
-              }"
               aria-haspopup="true"
               aria-controls="dropdown-menu4"
             >
-              Filter: {{ currentFilter }}
+              <img
+                src="assets/filter.png"
+                alt="Filter Task"
+                title="Filter Task"
+                width="30px"
+                height="30px"
+              />
+              <b>{{ currentFilterDisplay }}</b>
               <!-- <span class="icon is-small">
                 <i class="fas fa-cog" aria-hidden="true"></i>
               </span> -->
