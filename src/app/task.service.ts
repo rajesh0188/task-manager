@@ -47,7 +47,10 @@ export class TaskService {
   }
 
   getTasks(collectionId: number) {
-    return this.collections[collectionId].tasks || [];
+    if (this.collections[collectionId]) {
+      return this.collections[collectionId].tasks || [];
+    }
+    return [];
   }
 
   getTaskTitleById(collectionId: number, taskId: number) {
@@ -99,5 +102,10 @@ export class TaskService {
   syncDataToLocalStorage() {
     this.localService.saveData('collection', this.collections);
     this.collections = this.localService.getData('collection');
+  }
+
+  deleteAllCollections() {
+    this.collections = [];
+    this.syncDataToLocalStorage();
   }
 }

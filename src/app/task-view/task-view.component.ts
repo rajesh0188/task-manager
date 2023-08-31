@@ -69,6 +69,11 @@ export class TaskViewComponent implements OnInit {
     this.getTasks();
   }
 
+  onDeleteAllCollections() {
+    this.taskService.deleteAllCollections();
+    this.getTasks();
+  }
+
   onEditTaskClick(taskId: number) {
     this.router.navigate([
       '/collections',
