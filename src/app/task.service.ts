@@ -42,7 +42,7 @@ export class TaskService {
     const index = this.collections.findIndex((collection) => {
       return collection.id === +collectionId;
     });
-    this.collections.slice(index, 1);
+    this.collections.splice(index, 1);
     this.syncDataToLocalStorage();
   }
 
