@@ -3,41 +3,16 @@
     <div class="sidebar has-background-white">
       <div class="top-bar">
         <h2 class="title has-text-primary">Collections</h2>
-        <!-- <div class="dropdown is-hoverable is-right">
-          <div class="dropdown-trigger">
-            <a class="" aria-haspopup="true" aria-controls="dropdown-menu4">
-              <span class="icon">
-                <img
-                  src="https://www.iconpacks.net/icons/2/free-settings-icon-3110-thumb.png"
-                  alt="Settings"
-                  height="30px"
-                  width="30px"
-                />
-              </span>
-            </a>
-          </div>
-          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-            <div class="dropdown-content">
-              <a class="dropdown-item"> Edit </a>
-              <a
-                (click)="onDeleteListClick()"
-                class="dropdown-item has-text-danger"
-              >
-                Delete
-              </a>
-            </div>
-          </div>
-        </div> -->
       </div>
       <div class="collection-menu">
-        <a
+        <div
           class="collection-menu-item"
           *ngFor="let collection of collections; let i = index"
           [routerLink]="['/collections', i]"
           routerLinkActive="is-active"
         >
-          {{ collection.title }}</a
-        >
+          {{ collection.title }}
+        </div>
         <!-- <a class="collection-menu-item is-active"> Collection 2 </a> -->
         <!-- <a class="collection-menu-item"> Collection 3 </a> -->
       </div>
@@ -92,6 +67,37 @@
             </div>
           </div>
         </div>
+        <div class="dropdown is-hoverable is-right">
+          <div class="dropdown-trigger">
+            <a
+              class="button"
+              aria-haspopup="true"
+              aria-controls="dropdown-menu4"
+            >
+              <span class="icon">
+                <img
+                  src="https://www.iconpacks.net/icons/2/free-settings-icon-3110-thumb.png"
+                  alt="Settings"
+                  height="30px"
+                  width="30px"
+                />
+              </span>
+            </a>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu4" role="menu">
+            <div class="dropdown-content">
+              <a class="dropdown-item" (click)="onEditCollection()">
+                Edit Collection</a
+              >
+              <a
+                (click)="onDeleteCollection()"
+                class="dropdown-item has-text-danger"
+              >
+                Delete Collection
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
       <!-- Tasks -->
       <!-- <div class="task completed">
@@ -103,16 +109,49 @@
         *ngFor="let task of filteredTasks; let i = index"
         (click)="onTaskClick(i, task.status)"
       >
-        <p>
-          <label class="checkbox">
-            <input
-              [checked]="task.status === 'completed' ? true : false"
-              type="checkbox"
-            />
-          </label>
-          {{ task.title }}
-        </p>
-        <span class="tooltiptext">Click to change task status</span>
+        <div class="task-text">
+          <p>
+            <label class="checkbox">
+              <input
+                [checked]="task.status === 'completed' ? true : false"
+                type="checkbox"
+              />
+            </label>
+            {{ task.title }}
+          </p>
+          <span class="tooltiptext">Click to change task status</span>
+        </div>
+        <div class="task-buttons is-right">
+          <button class="button icon-btn is-small">
+            <div class="icon">
+              <img
+                src="https://img.favpng.com/20/19/20/computer-icons-editing-icon-design-symbol-png-favpng-dyeD5mCrZ3BA3ERVZTiaa8F1F.jpg"
+                alt="Edit"
+                title="Edit"
+                height="20px"
+                width="20px"
+              />
+              <!-- <i class="fas fa-edit"></i> -->
+            </div>
+          </button>
+
+          <button
+            class="button icon-btn is-small"
+            (click)="onDeleteTaskClick(task.id)"
+            style="margin-left: 10px"
+          >
+            <div class="icon">
+              <img
+                src="https://www.clipartmax.com/png/middle/84-842915_delete-icon-png-red.png"
+                alt="Delete"
+                height="20px"
+                title="Delete"
+                width="20px"
+              />
+              <!-- <i class="fas fa-trash"></i> -->
+            </div>
+          </button>
+        </div>
       </div>
       <h3 class="empty-state-text" *ngIf="collectionId && tasks.length === 0">
         There are no tasks here! Click the add button to create a new task.

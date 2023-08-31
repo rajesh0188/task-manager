@@ -3,7 +3,7 @@ import { TaskService } from '../task.service';
 import { Collection } from '../collection-model';
 import { Task } from '../task.model';
 
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-task-view',
@@ -18,7 +18,8 @@ export class TaskViewComponent implements OnInit {
   currentFilter: string = 'all';
   constructor(
     private taskService: TaskService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -58,4 +59,15 @@ export class TaskViewComponent implements OnInit {
     this.currentFilter = filter;
     this.getTasks();
   }
+
+  onEditCollection() {
+    this.router.navigate(['/edit-collection', this.collectionId]);
+  }
+
+  onDeleteCollection() {
+    this.taskService.deleteCollection(this.collectionId);
+    this.getTasks();
+  }
+
+  onDeleteTaskClick(taskId: number) {}
 }

@@ -57,7 +57,7 @@
 
   .collection-menu-item {
     display: flex;
-
+    cursor: pointer;
     align-items: center;
     padding: 10px 15px;
     border-radius: 5px;
@@ -88,20 +88,19 @@
 
   align-items: center;
 
+  &:hover {
+    box-shadow: 0 0 0 5px #eeeeee;
+
+    .task-buttons {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
   &:not(.completed) {
     transition: box-shadow 0.2s ease, transform 0.2s ease;
 
     &:active {
       transform: scale(0.95);
-    }
-
-    &:hover {
-      box-shadow: 0 0 0 5px #eeeeee;
-
-      .task-buttons {
-        opacity: 1;
-        transform: scale(1);
-      }
     }
   }
 
@@ -136,4 +135,8 @@ span.icon {
   font-size: 2.5rem;
 
   font-weight: 900;
+}
+
+.icon-btn {
+  border: none !important;
 }

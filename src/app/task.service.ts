@@ -38,7 +38,12 @@ export class TaskService {
     this.syncDataToLocalStorage();
   }
 
-  deleteCollection(index: number) {
+  deleteCollection(collectionId: number) {
+    console.info(collectionId);
+    const index = this.collections.findIndex((collection) => {
+      return collection.id === +collectionId;
+    });
+    console.info(index);
     this.collections.slice(index, 1);
     this.syncDataToLocalStorage();
   }
